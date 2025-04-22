@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Data Scientist Roadmap</title>
+    <style>
+        :root {
+            --primary: #0f0e17;
+            --secondary: #ff8906;
+            --accent: #e53170;
+            --neon: #00f5d4;
+            --light: #fffffe;
+            --dark: #0f0e17;
+            --success: #2cb67d;
+            --glow: 0 0 10px var(--neon), 0 0 20px var(--neon);
+        }
+        
+        body {
+            font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), rgba(15, 14, 23, 0.8));
+            color: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 137, 6, 0.2);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neon);
+            
+        }
+        
+        h2 {
+            color: var(--neon);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .section-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .section-box {
+            flex: 1 1 300px;
+            background: rgba(15, 14, 23, 0.7);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--neon);
+        }
+        
+        .question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .question h4 {
+            color: var(--neon);
+            margin-bottom: 0.5rem;
+        }
+        
+        .answer {
+            color: rgba(255, 255, 254, 0.9);
+        }
+        
+        .daily-plan {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .day-card {
+            flex: 1 1 300px;
+            background: rgba(15, 14, 23, 0.7);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .day-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .day-number {
+            background-color: var(--secondary);
+            color: var(--dark);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li::before {
+            content: '▹';
+            color: var(--neon);
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlight {
+            color: var(--neon);
+            font-weight: 500;
+        }
+        
+        .urgent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+            color: var(--light);
+            border-top: 1px solid rgba(255, 137, 6, 0.2);
+        }
+        
+        .video-container {
+            max-width: 90%;
+            margin: 30px auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background-color: #000;
+          }
+          
+          .custom-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            outline: none;
+            background: #000;
+          }
+          
+          /* Optional: Add a smooth hover effect */
+          .custom-video:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+          }
+
+          
+          .flashcard {
+            background: rgba(15, 14, 23, 0.8);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--neon);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 120px;
+        }
+        
+        .flashcard:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.2);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            transition: opacity 0.3s ease;
+        }
+        
+        .flashcard-back {
+            display: none;
+            color: var(--light);
+        }
+        
+        .flashcard:hover .flashcard-front {
+            opacity: 0;
+            display: none;
+        }
+        
+        .flashcard:hover .flashcard-back {
+            display: block;
+            opacity: 1;
+        }
+        
+        .flashcard h4 {
+            color: var(--secondary);
+            margin-top: 0;
+            border-bottom: 1px dashed var(--neon);
+            padding-bottom: 0.5rem;
+        }
+        
+        .flashcard code {
+            background: rgba(0, 245, 212, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--neon);
+        }    
+         
+        .resources-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            background-color: #111;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+        }
+        
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        
+        .resource-item {
+            flex: 1 1 45%;
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+        }
+        
+        .resource-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .resource-item ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .video-frame iframe {
+            border-radius: 12px;
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Neon color variable */
+        :root {
+            --neon: #00ffff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resource-item {
+                flex: 1 1 100%;
+            }
+        }
+        
+        
+        @media (max-width: 768px) {
+            .section-box, .day-card {
+                flex: 1 1 100%;
+            }
+            .video-container {
+                max-width: 90%;
+                margin: 30px auto;
+                border-radius: 16px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                background-color: #000;
+              }
+              
+              .custom-video {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 16px;
+                outline: none;
+                background: #000;
+              }
+              
+              /* Optional: Add a smooth hover effect */
+              .custom-video:hover {
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+              }
+            }
+        
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+      
+    <script>
+            video.addEventListener('touchend', function (e) {
+              const currentTime = new Date().getTime();
+              const tapLength = currentTime - lastTap;
+              const tapX = e.changedTouches[0].clientX;
+              const midX = window.innerWidth / 2;
+          
+              if (tapLength < 300) {
+                if (tapX < midX) {
+                  video.currentTime -= 5;
+                  showToast("⏪ Rewind 5s");
+                } else {
+                  video.currentTime += 5;
+                  showToast("⏩ Forward 5s");
+                }
+              }
+              lastTap = currentTime;
+            });
+          
+            // 💻 Keyboard Control (Desktop)
+            document.addEventListener('keydown', function (e) {
+              if (e.key === 'ArrowRight') {
+                video.currentTime += 5;
+                showToast("⏩ Forward 5s");
+              } else if (e.key === 'ArrowLeft') {
+                video.currentTime -= 5;
+                showToast("⏪ Rewind 5s");
+              }
+            });
+          
+            // 🎀 Toast Notification
+            function showToast(message) {
+              let toast = document.createElement("div");
+              toast.innerText = message;
+              toast.style.position = "fixed";
+              toast.style.bottom = "80px";
+              toast.style.left = "50%";
+              toast.style.transform = "translateX(-50%)";
+              toast.style.background = "#333";
+              toast.style.color = "#fff";
+              toast.style.padding = "8px 16px";
+              toast.style.borderRadius = "8px";
+              toast.style.fontSize = "1rem";
+              toast.style.opacity = "0.9";
+              toast.style.zIndex = "9999";
+              document.body.appendChild(toast);
+          
+              setTimeout(() => {
+                toast.remove();
+              }, 1000);
+            }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('myVideo');
+            video.addEventListener('play', function() {
+                this.currentTime = 0; // Reset to start when played
+            });
+        });
+
+            const video = document.getElementById('myVideo');
+            let lastTap = 0;
+          
+            video.addEventListener('touchend', function (e) {
+              const currentTime = new Date().getTime();
+              const tapLength = currentTime - lastTap;
+          
+              const tapX = e.changedTouches[0].clientX;
+              const midX = window.innerWidth / 2;
+          
+              if (tapLength < 300) {
+                // Double tap detected
+                if (tapX < midX) {
+                  video.currentTime -= 5; // Left tap - rewind
+                } else {
+                  video.currentTime += 5; // Right tap - forward
+                }
+              }
+          
+              lastTap = currentTime;
+            });
+            
+
+          </script>
+          
+    <header>
+        <h1>Complete Data Scientist Roadmap</h1>
+        <p>From foundations to job readiness - all your questions answered</p>
+    </header>
+    <section>
+        <h2>Introduction</h2>
+        <p>Data Science is a rapidly evolving field that combines statistics, programming, and domain expertise to extract insights from data. This roadmap provides a comprehensive guide for aspiring data scientists, covering essential skills, tools, and best practices.</p>
+        <p>Whether you're a beginner or looking to enhance your skills, this roadmap will help you navigate the complex landscape of data science.</p>
+        <section class="video-container">
+            <p style="text-align: center; font-size: 1.1rem; color: #888;">
+              🎥 Double tap left/right on mobile to rewind/forward 5 seconds.<br>
+              ⌨️ Use Left/Right arrow keys on desktop too!
+            </p>
+            
+            <video id="myVideo" class="custom-video" controls preload="metadata" poster="static\img\How-To-Become-a-Data-Scientist.jpg">
+              <source src="static/img/How-to-become-a-Data-Scientist-in-2025.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </section>
+          
+        <p>In this video, we will explore the key skills and tools needed to become a successful data scientist in 2025. We will also discuss the importance of continuous learning and staying updated with industry trends.</p>          
+          
+
+    <section>
+        <h2>Data Science Fundamentals</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is Data Science?</h4>
+                    <div class="answer">
+                        Data Science is an interdisciplinary field that uses scientific methods, algorithms, and systems to extract knowledge and insights from structured and unstructured data. It combines:
+                        <ul>
+                            <li>Statistics and mathematics</li>
+                            <li>Programming and data engineering</li>
+                            <li>Domain expertise</li>
+                            <li>Data visualization</li>
+                            <li>Machine learning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>What is the core of Data Science?</h4>
+                    <div class="answer">
+                        The core revolves around:
+                        <ul>
+                            <li><strong>Data-driven decision making:</strong> Using evidence from data rather than intuition</li>
+                            <li><strong>Extracting meaningful patterns:</strong> Finding signals in noise</li>
+                            <li><strong>Creating predictive models:</strong> Forecasting future outcomes</li>
+                            <li><strong>Communicating insights:</strong> Telling compelling stories with data</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>How does Data Science differ from related fields?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Business Intelligence:</strong> Focuses on descriptive analytics (what happened)</li>
+                            <li><strong>Statistics:</strong> Theoretical foundation without implementation</li>
+                            <li><strong>Machine Learning:</strong> Subset focused on predictive modeling</li>
+                            <li><strong>Data Engineering:</strong> Focuses on data pipelines and infrastructure</li>
+                        </ul>
+                        Data Science integrates aspects of all these fields.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>Why is Data Science in demand?</h4>
+                    <div class="answer">
+                        Key drivers include:
+                        <ul>
+                            <li>Explosion of data generation (2.5 quintillion bytes daily)</li>
+                            <li>Cheaper storage and processing power</li>
+                            <li>Proven business value across industries</li>
+                            <li>Shortage of skilled professionals</li>
+                            <li>Competitive advantage for companies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>What problems can Data Science solve?</h4>
+                    <div class="answer">
+                        Real-world applications:
+                        <ul>
+                            <li><strong>Healthcare:</strong> Disease prediction, drug discovery</li>
+                            <li><strong>Finance:</strong> Fraud detection, risk assessment</li>
+                            <li><strong>Retail:</strong> Recommendation systems, inventory optimization</li>
+                            <li><strong>Manufacturing:</strong> Predictive maintenance</li>
+                            <li><strong>Marketing:</strong> Customer segmentation, churn prediction</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Key skills for Data Scientists?</h4>
+                    <div class="answer">
+                        <strong>Technical:</strong>
+                        <ul>
+                            <li>Programming (Python/R)</li>
+                            <li>SQL and databases</li>
+                            <li>Machine learning</li>
+                            <li>Data visualization</li>
+                        </ul>
+                        <strong>Soft Skills:</strong>
+                        <ul>
+                            <li>Communication</li>
+                            <li>Business acumen</li>
+                            <li>Problem-solving</li>
+                            <li>Curiosity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>Essential programming languages?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Python (80%+ usage):</strong> General-purpose with rich libraries</li>
+                            <li><strong>R:</strong> Strong in statistical analysis</li>
+                            <li><strong>SQL:</strong> Essential for data extraction</li>
+                            <li><strong>Bonus:</strong> Scala for big data, JavaScript for visualization</li>
+                        </ul>
+                        Python is recommended for beginners due to its versatility.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Essential libraries/frameworks?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Data Manipulation:</strong> Pandas, NumPy</li>
+                            <li><strong>Visualization:</strong> Matplotlib, Seaborn, Plotly</li>
+                            <li><strong>Machine Learning:</strong> Scikit-learn, XGBoost</li>
+                            <li><strong>Deep Learning:</strong> TensorFlow, PyTorch</li>
+                            <li><strong>Big Data:</strong> Spark, Dask</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Types of Machine Learning?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Supervised:</strong> Labeled data (classification, regression)</li>
+                            <li><strong>Unsupervised:</strong> Unlabeled data (clustering, dimensionality reduction)</li>
+                            <li><strong>Reinforcement:</strong> Reward-based learning (robotics, game AI)</li>
+                            <li><strong>Semi-supervised:</strong> Mix of labeled and unlabeled data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Career and Learning Path</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <div class="question">
+                    <h4>Typical Data Science roles?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Data Analyst:</strong> Reports and dashboards</li>
+                            <li><strong>Data Scientist:</strong> Modeling and advanced analytics</li>
+                            <li><strong>ML Engineer:</strong> Production models and systems</li>
+                            <li><strong>Data Engineer:</strong> Pipelines and infrastructure</li>
+                            <li><strong>BI Developer:</strong> Business reporting</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Day-to-day responsibilities?</h4>
+                    <div class="answer">
+                        Common tasks:
+                        <ul>
+                            <li>Data cleaning and preprocessing (60% time)</li>
+                            <li>Exploratory data analysis</li>
+                            <li>Model development and evaluation</li>
+                            <li>Creating visualizations and reports</li>
+                            <li>Collaborating with stakeholders</li>
+                            <li>Deploying and monitoring models</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Educational background?</h4>
+                    <div class="answer">
+                        Common paths:
+                        <ul>
+                            <li><strong>Formal:</strong> Degrees in CS, Stats, Math, or related fields</li>
+                            <li><strong>Bootcamps:</strong> Intensive 3-6 month programs</li>
+                            <li><strong>Self-taught:</strong> Online courses and projects</li>
+                            <li><strong>Transitioning:</strong> From related fields like engineering or economics</li>
+                        </ul>
+                        Many successful data scientists come from non-traditional backgrounds.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>Typical career path?</h4>
+                    <div class="answer">
+                        Common progression:
+                        <ol>
+                            <li>Data Analyst (0-2 years)</li>
+                            <li>Junior Data Scientist (2-3 years)</li>
+                            <li>Data Scientist (3-5 years)</li>
+                            <li>Senior Data Scientist (5+ years)</li>
+                            <li>Lead/Manager or Specialist roles</li>
+                        </ol>
+                        Many branch into ML Engineering, Analytics Leadership, or AI Research.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Time to learn fundamentals?</h4>
+                    <div class="answer">
+                        Varies by background:
+                        <ul>
+                            <li><strong>Technical background:</strong> 3-6 months full-time</li>
+                            <li><strong>Non-technical background:</strong> 6-12 months</li>
+                            <li><strong>Part-time learning:</strong> 12-18 months</li>
+                        </ul>
+                        Focus on consistent, project-based learning rather than time estimates.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Learning resources?</h4>
+                    <div class="answer">
+                        <strong>Free:</strong>
+                        <ul>
+                            <li>Kaggle Learn</li>
+                            <li>Fast.ai</li>
+                            <li>YouTube channels (StatQuest, 3Blue1Brown)</li>
+                        </ul>
+                        <strong>Paid:</strong>
+                        <ul>
+                            <li>Coursera/edX specializations</li>
+                            <li>DataCamp</li>
+                            <li>Books: "Python for Data Analysis", "ISLR"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>Importance of domain focus?</h4>
+                    <div class="answer">
+                        Benefits of specialization:
+                        <ul>
+                            <li>Easier to identify valuable problems</li>
+                            <li>Better communication with stakeholders</li>
+                            <li>More impactful solutions</li>
+                            <li>Higher earning potential</li>
+                        </ul>
+                        Common domains: Healthcare, Finance, E-commerce, IoT.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Portfolio importance?</h4>
+                    <div class="answer">
+                        Critical for:
+                        <ul>
+                            <li>Demonstrating practical skills</li>
+                            <li>Showing problem-solving ability</li>
+                            <li>Compensating for lack of experience</li>
+                            <li>Standing out in job applications</li>
+                        </ul>
+                        Quality > quantity: 2-3 well-documented projects are ideal.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Common beginner challenges?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li>Getting stuck in "tutorial hell"</li>
+                            <li>Underestimating data cleaning time</li>
+                            <li>Overfocusing on complex models</li>
+                            <li>Difficulty explaining results</li>
+                            <li>Imposter syndrome</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Ethics and Best Practices</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <div class="question">
+                    <h4>Ethical considerations?</h4>
+                    <div class="answer">
+                        Key issues:
+                        <ul>
+                            <li><strong>Bias:</strong> In data and algorithms</li>
+                            <li><strong>Privacy:</strong> GDPR, data anonymization</li>
+                            <li><strong>Fairness:</strong> Equitable model outcomes</li>
+                            <li><strong>Transparency:</strong> Explainable AI</li>
+                            <li><strong>Accountability:</strong> For model decisions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Industry applications?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Healthcare:</strong> Predictive diagnostics</li>
+                            <li><strong>Finance:</strong> Fraud detection</li>
+                            <li><strong>Retail:</strong> Recommendation systems</li>
+                            <li><strong>Manufacturing:</strong> Predictive maintenance</li>
+                            <li><strong>Transportation:</strong> Route optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Data Science workflow?</h4>
+                    <div class="answer">
+                        Standard process:
+                        <ol>
+                            <li>Problem definition</li>
+                            <li>Data collection</li>
+                            <li>Data cleaning</li>
+                            <li>Exploratory analysis</li>
+                            <li>Feature engineering</li>
+                            <li>Model building</li>
+                            <li>Evaluation</li>
+                            <li>Deployment</li>
+                            <li>Monitoring</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>Common pitfalls?</h4>
+                    <div class="answer">
+                        Mistakes to avoid:
+                        <ul>
+                            <li>Starting with complex models</li>
+                            <li>Ignoring business context</li>
+                            <li>Poor data quality checks</li>
+                            <li>Overfitting models</li>
+                            <li>Not versioning code/data</li>
+                            <li>Failing to communicate results</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Theory vs. practice balance?</h4>
+                    <div class="answer">
+                        Recommended approach:
+                        <ul>
+                            <li>Learn theory as needed for projects</li>
+                            <li>20% theory, 80% practice ratio</li>
+                            <li>Deepen theoretical understanding over time</li>
+                            <li>Focus on implementation first</li>
+                        </ul>
+                        "Learn enough theory to be dangerous, then build."
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>Staying updated?</h4>
+                    <div class="answer">
+                        Effective strategies:
+                        <ul>
+                            <li>Follow arXiv papers</li>
+                            <li>Subscribe to Towards Data Science</li>
+                            <li>Join local meetups</li>
+                            <li>Participate in Kaggle competitions</li>
+                            <li>Attend conferences (PyData, NeurIPS)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Foundational Statistical Concepts</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is Statistics, and why is it a fundamental pillar of Data Science?</h4>
+                    <div class="answer">
+                        Statistics is the science of collecting, analyzing, interpreting, and presenting data. It's fundamental to Data Science because:
+                        <ul>
+                            <li>Provides methods for data analysis and inference</li>
+                            <li>Helps quantify uncertainty in conclusions</li>
+                            <li>Forms the mathematical foundation for machine learning</li>
+                            <li>Enables valid conclusions from incomplete data (samples)</li>
+                        </ul>
+                    </div>
+                </div>
+               <hr> 
+                <div class="question">
+                    <h4>What are the different types of data?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Nominal:</strong> Categories without order (e.g., colors)</li>
+                            <li><strong>Ordinal:</strong> Ordered categories (e.g., survey scales)</li>
+                            <li><strong>Interval:</strong> Numerical with consistent intervals (e.g., temperature in °C)</li>
+                            <li><strong>Ratio:</strong> Numerical with true zero (e.g., height, weight)</li>
+                        </ul>
+                        Understanding types is crucial because they determine which statistical methods and visualizations are appropriate.
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="section-box">
+                <div class="question">
+                    <h4>What are descriptive statistics?</h4>
+                    <div class="answer">
+                        Descriptive statistics summarize and describe features of a dataset:
+                        <ul>
+                            <li><strong>Central tendency:</strong> Mean, median, mode</li>
+                            <li><strong>Dispersion:</strong> Range, variance, standard deviation</li>
+                            <li><strong>Shape:</strong> Skewness, kurtosis</li>
+                        </ul>
+                        Example: The average (mean) test score was 75 with a standard deviation of 10.
+                    </div>
+                </div>
+               <hr> 
+                <div class="question">
+                    <h4>What are the different types of distributions?</h4>
+                    <div class="answer">
+                        Key distributions in statistical modeling:
+                        <ul>
+                            <li><strong>Normal:</strong> Bell curve, many natural phenomena</li>
+                            <li><strong>Binomial:</strong> Success/failure outcomes</li>
+                            <li><strong>Poisson:</strong> Counts of rare events</li>
+                            <li><strong>Exponential:</strong> Time between events</li>
+                        </ul>
+                        Important because many statistical tests assume specific distributions.
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is probability?</h4>
+                    <div class="answer">
+                        Probability quantifies how likely an event is to occur (0 = impossible, 1 = certain). It underpins statistical inference by:
+                        <ul>
+                            <li>Modeling uncertainty in conclusions</li>
+                            <li>Calculating confidence intervals</li>
+                            <li>Determining p-values in hypothesis testing</li>
+                            <li>Forming Bayesian approaches</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="question">
+                    <h4>What are random variables?</h4>
+                    <div class="answer">
+                        Random variables are numerical descriptions of uncertain outcomes:
+                        <ul>
+                            <li><strong>Discrete:</strong> Countable outcomes (e.g., dice rolls)</li>
+                            <li><strong>Continuous:</str> Measurable outcomes (e.g., temperature)</li>
+                        </ul>
+                        They form the building blocks for probability distributions and statistical models.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <h2>Inferential Statistics & Hypothesis Testing</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is inferential statistics?</h4>
+                    <div class="answer">
+                        Methods for drawing conclusions about populations from sample data:
+                        <ul>
+                            <li>Estimation (point and interval)</li>
+                            <li>Hypothesis testing</li>
+                            <li>Regression analysis</li>
+                            <li>ANOVA</li>
+                        </ul>
+                        Example: Using a sample survey to estimate political preferences nationwide.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>What are confidence intervals?</h4>
+                    <div class="answer">
+                        A range of values that likely contains a population parameter:
+                        <ul>
+                            <li>95% CI means 95% of such intervals will contain the true parameter</li>
+                            <li>Calculated as: estimate ± margin of error</li>
+                            <li>Wider intervals indicate more uncertainty</li>
+                        </ul>
+                        Interpretation: "We're 95% confident the true mean is between X and Y."
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is hypothesis testing?</h4>
+                    <div class="answer">
+                        A formal process for testing claims about data:
+                        <ol>
+                            <li>State null (H₀) and alternative (H₁) hypotheses</li>
+                            <li>Choose significance level (α, typically 0.05)</li>
+                            <li>Calculate test statistic</li>
+                            <li>Determine p-value</li>
+                            <li>Make decision (reject or fail to reject H₀)</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>What are Type I and Type II errors?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>Type I (False Positive):</strong> Rejecting true H₀</li>
+                            <li><strong>Type II (False Negative):</strong> Failing to reject false H₀</li>
+                        </ul>
+                        Trade-off: Reducing one increases the other. Controlled via:
+                        <ul>
+                            <li>Significance level (α) for Type I</li>
+                            <li>Sample size and effect size for Type II</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <div class="question">
+                    <h4>What is a p-value?</h4>
+                    <div class="answer">
+                        The probability of observing results at least as extreme as those in the data, assuming H₀ is true.
+                        <ul>
+                            <li><strong>p ≤ α:</strong> Reject H₀ (statistically significant)</li>
+                            <li><strong>p > α:</strong> Fail to reject H₀</li>
+                        </ul>
+                        Common misconception: p-value is NOT the probability that H₀ is true.
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h4>What are common statistical tests?</h4>
+                    <div class="answer">
+                        <ul>
+                            <li><strong>t-tests:</strong> Compare means (1-sample, 2-sample, paired)</li>
+                            <li><strong>Chi-squared:</strong> Test independence in categorical data</li>
+                            <li><strong>ANOVA:</strong> Compare means across >2 groups</li>
+                            <li><strong>Regression:</strong> Model relationships between variables</li>
+                        </ul>
+                        Choice depends on data type and research question.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Essential Linear Algebra for Data Science</h2>
+        <div class="section-container">
+            <div class="section-box">
+                <h3>Core Concepts</h3>
+                <ul>
+                    <li><strong>Vectors & Vector Spaces</strong>
+                        <ul>
+                            <li>Vector operations (addition, scalar multiplication)</li>
+                            <li>Dot product and projections</li>
+                            <li>Linear independence</li>
+                            <li>Basis and dimension</li>
+                        </ul>
+                    </li>
+                    <li><strong>Matrices</strong>
+                        <ul>
+                            <li>Matrix operations (addition, multiplication)</li>
+                            <li>Special matrices (identity, diagonal, symmetric)</li>
+                            <li>Matrix transposition</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="section-box">
+                <h3>Key Operations</h3>
+                <ul>
+                    <li><strong>Systems of Linear Equations</strong>
+                        <ul>
+                            <li>Gaussian elimination</li>
+                            <li>Matrix inverses</li>
+                            <li>LU decomposition</li>
+                        </ul>
+                    </li>
+                    <li><strong>Matrix Decompositions</strong>
+                        <ul>
+                            <li>Eigen decomposition (eigenvalues/vectors)</li>
+                            <li>Singular Value Decomposition (SVD)</li>
+                            <li>QR decomposition</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="section-box">
+                <h3>Data Science Applications</h3>
+                <ul>
+                    <li><strong>Dimensionality Reduction</strong>
+                        <ul>
+                            <li>Principal Component Analysis (PCA)</li>
+                            <li>Latent Semantic Analysis</li>
+                        </ul>
+                    </li>
+                    <li><strong>Machine Learning</strong>
+                        <ul>
+                            <li>Linear regression (normal equations)</li>
+                            <li>Neural networks (weight matrices)</li>
+                            <li>Support Vector Machines (kernels)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Recommendation Systems</strong>
+                        <ul>
+                            <li>Matrix factorization</li>
+                            <li>Collaborative filtering</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="resources-container">
+            <h3>📘 Recommended Learning Resources for Algebra</h3>
+            <div class="resources">
+        
+                <div class="resource-item">
+                    <ul>
+                        <li><strong>Interactive Tutorial:</strong> 
+                            <a href="https://www.khanacademy.org/math/linear-algebra" style="color: var(--neon);" target="_blank">
+                                Khan Academy Linear Algebra
+                            </a>
+                        </li>
+                        <li><strong>Practical Book:</strong> 
+                            "Linear Algebra for Everyone" by Gilbert Strang
+                        </li>
+                        <li><strong>Visual Guide:</strong> 
+                            <a href="https://www.3blue1brown.com/topics/linear-algebra" style="color: var(--neon);" target="_blank">
+                                3Blue1Brown – Essence of Linear Algebra
+                            </a> (With notes under videos)
+                        </li>
+                        <li><strong>Python Practice:</strong> 
+                            NumPy Linear Algebra Operations
+                        </li>
+                        <li><strong>University-Level:</strong> 
+                            <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/video_galleries/video-lectures/" style="color: var(--neon);" target="_blank">
+                                MIT OCW – Prof. Gilbert Strang Lectures
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        
+                <div class="resource-item video-frame">
+                    <h4 style="margin-bottom: 10px;">YouTube Playlist</h4>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=uxxUUo9zAKfsXbeP&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                        gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+        
+            </div>
+        </div>
+        
+    </section>
+    <section>
+        <h2>Vector Fundamentals: Flash Cards</h2>
+        <div class="section-container">
+            <!-- Card 1 -->
+            <div class="phase">
+                <h3><span class="phase-number">1</span> Three Perspectives on Vectors</h3>
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Physics Student View</h4>
+                        <p>How would you describe a vector in physical space?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Arrows pointing in space</li>
+                            <li>Defined by length and direction</li>
+                            <li>Can move anywhere (translation invariant)</li>
+                            <li>2D (plane) or 3D (space) vectors</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Computer Science View</h4>
+                        <p>How is a vector represented in data analysis?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Ordered lists of numbers</li>
+                            <li>Example: [square_footage, price]</li>
+                            <li>Order matters in the list</li>
+                            <li>Dimension = length of list</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Mathematician's View</h4>
+                        <p>What's the abstract definition?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Anything with vector addition + scalar multiplication</li>
+                            <li>Abstract algebraic structure</li>
+                            <li>Generalizes both other perspectives</li>
+                            <li>Basis for linear algebra theory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 2 -->
+            <div class="phase">
+                <h3><span class="phase-number">2</span> Coordinate Systems & Notation</h3>
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>2D Coordinates</h4>
+                        <p>How are vectors represented numerically?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Tail at origin (0,0)</li>
+                            <li>Coordinates = [x, y]</li>
+                            <li>x: right(+) / left(-) movement</li>
+                            <li>y: up(+) / down(-) movement</li>
+                            <li>Written vertically: <code><pre></pre>⎡x⎤<br>                  ⎣y⎦</pre></code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>3D Extension</h4>
+                        <p>How does this generalize to 3D?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Add z-axis perpendicular to x & y</li>
+                            <li>Vectors as triplets: [x, y, z]</li>
+                            <li>z: forward(+) / backward(-)</li>
+                            <li>Bijection between points and vectors</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Visualization Tip</h4>
+                        <p>How should you picture vectors?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Always rooted at origin</li>
+                            <li>Arrow with direction/magnitude</li>
+                            <li>Coordinates = tip location</li>
+                            <li>Grid lines help but can clutter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 3 -->
+            <div class="phase">
+                <h3><span class="phase-number">3</span> Vector Operations</h3>
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Vector Addition</h4>
+                        <p>How do you add two vectors geometrically?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Tip-to-tail method</li>
+                            <li>Move 2nd vector's tail to 1st's tip</li>
+                            <li>Result: origin → final tip</li>
+                            <li>Numerically: add components<br>
+                               <code><pre>  ⎡1⎤ + ⎡ 3⎤ = ⎡4⎤<br>  ⎣2⎦   ⎣-1⎦   ⎣1⎦ </pre></code></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Scalar Multiplication</h4>
+                        <p>What does "scaling" a vector mean?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>Stretch/squish by scalar factor</li>
+                            <li>Negative values flip direction</li>
+                            <li>Examples:<br>
+                                • 2 × → double length<br>
+                                • ⅓ × → shrink to 33%<br>
+                                • -1.8 × → flip + stretch</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <h4>Core Principle</h4>
+                        <p>Why are these operations fundamental?</p>
+                    </div>
+                    <div class="flashcard-back">
+                        <ul>
+                            <li>All linear algebra builds on these</li>
+                            <li>Mimics number line operations</li>
+                            <li>Physics: combined movements</li>
+                            <li>CS: element-wise operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </
+            div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>Continue your data science journey with consistent practice and real-world projects!</p>
+        <p>© 2023 Complete Data Science Roadmap</p>
+    </footer>
+</body>
+</html>
